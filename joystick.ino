@@ -1,29 +1,18 @@
 void setup() {
   // put your setup code here, to run once:
-  pinMode(2, OUTPUT);
-  pinMode(3, OUTPUT);
-  pinMode(4, OUTPUT);
-  pinMode(A5, INPUT);
+  pinMode(A0, INPUT);
+  pinMode(A1, INPUT);
   Serial.begin(9600);
 }
 
 void loop() {
-    int ldr = analogRead(A5);
-
-   Serial.println(ldr);
-   
-    if (ldr >= 400) {
-      digitalWrite(2, HIGH);
-      digitalWrite(3, LOW);
-      digitalWrite(4, LOW);
-    } else if (ldr <= 400 && ldr >= 200) {
-      digitalWrite(2, LOW);
-      digitalWrite(3, HIGH);
-      digitalWrite(4, LOW);
-    }
-    if (ldr <= 200) {
-      digitalWrite(2, LOW);
-      digitalWrite(3, LOW);
-      digitalWrite(4, HIGH);
-    }
+    int horizontal = analogRead(A0);
+    int vertical = analogRead(A1);
+    
+   Serial.println("Horizontal: ") ;
+   Serial.println(String(horizontal));
+   Serial.println(" - Vertical: ");
+   Serial.println( String(vertical));
+   Serial.println("-------");   
+   delay(1000);
 }
